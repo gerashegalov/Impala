@@ -32,7 +32,7 @@ import org.apache.hadoop.fs.s3a.S3AFileSystem;
 import org.apache.hadoop.fs.s3native.NativeS3FileSystem;
 import org.apache.hadoop.hdfs.DistributedFileSystem;
 import org.apache.hadoop.hdfs.client.HdfsAdmin;
-import org.apache.hadoop.hdfs.protocol.EncryptionZone;
+//import org.apache.hadoop.hdfs.protocol.EncryptionZone;
 import org.apache.log4j.Logger;
 
 import com.google.common.base.Preconditions;
@@ -83,6 +83,7 @@ public class FileSystemUtil {
   /**
    * Returns true if path p1 and path p2 are in the same encryption zone.
    */
+/*
   private static boolean arePathsInSameEncryptionZone(FileSystem fs, Path p1,
       Path p2) throws IOException {
     HdfsAdmin hdfsAdmin = new HdfsAdmin(fs.getUri(), CONF);
@@ -92,6 +93,7 @@ public class FileSystemUtil {
     if (z1 == null || z2 == null) return false;
     return z1.equals(z2);
   }
+*/
 
   /**
    * Relocates all visible (non-hidden) files from a source directory to a destination
@@ -159,12 +161,12 @@ public class FileSystemUtil {
           appendToBaseFileName(destFile.getName(), UUID.randomUUID().toString()));
     }
 
-    if (arePathsInSameEncryptionZone(fs, sourceFile, destFile)) {
+    /*if (arePathsInSameEncryptionZone(fs, sourceFile, destFile)) {
       LOG.debug(String.format(
           "Moving '%s' to '%s'", sourceFile.toString(), destFile.toString()));
       // Move (rename) the file.
       fs.rename(sourceFile, destFile);
-    } else {
+    } elsei*/ {
       // We must copy rather than move if the source and dest are in different encryption
       // zones. A move would return an error from the NN because a move is a metadata-only
       // operation and the files would not be encrypted/decrypted properly on the DNs.

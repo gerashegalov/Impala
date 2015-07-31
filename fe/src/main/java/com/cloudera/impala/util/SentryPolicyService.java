@@ -223,7 +223,7 @@ public class SentryPolicyService {
       switch (privilege.getScope()) {
         case SERVER:
           client.get().grantServerPrivilege(requestingUser.getShortName(), roleName,
-              privilege.getServer_name(), privilege.isHas_grant_opt());
+              privilege.getServer_name(), "dummyAction", privilege.isHas_grant_opt());
           break;
         case DATABASE:
           client.get().grantDatabasePrivilege(requestingUser.getShortName(), roleName,

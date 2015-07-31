@@ -155,12 +155,12 @@ else
   export IMPALA_CYRUS_SASL_INSTALL_DIR=${IMPALA_HOME}/thirdparty/cyrus-sasl-${IMPALA_CYRUS_SASL_VERSION}/build
 fi
 
-export IMPALA_HADOOP_VERSION=2.6.0-cdh5.5.0-SNAPSHOT
-export IMPALA_HBASE_VERSION=1.0.0-cdh5.5.0-SNAPSHOT
-export IMPALA_HIVE_VERSION=1.1.0-cdh5.5.0-SNAPSHOT
-export IMPALA_SENTRY_VERSION=1.5.1-cdh5.5.0-SNAPSHOT
-export IMPALA_LLAMA_VERSION=1.0.0-cdh5.5.0-SNAPSHOT
-export IMPALA_PARQUET_VERSION=1.5.0-cdh5.5.0-SNAPSHOT
+export IMPALA_HADOOP_VERSION=2.4.0
+export IMPALA_HBASE_VERSION=1.0.0
+export IMPALA_HIVE_VERSION=1.2.0
+export IMPALA_SENTRY_VERSION=1.5.0-incubating
+export IMPALA_LLAMA_VERSION=1.0.0
+export IMPALA_PARQUET_VERSION=1.5.0
 export IMPALA_MINIKDC_VERSION=1.0.0
 
 export IMPALA_FE_DIR=$IMPALA_HOME/fe
@@ -173,7 +173,8 @@ export IMPALA_COMMON_DIR=$IMPALA_HOME/common
 export PATH=$IMPALA_HOME/bin:$PATH
 
 # Hadoop dependencies are snapshots in the Impala tree
-export HADOOP_HOME=$IMPALA_HOME/thirdparty/hadoop-${IMPALA_HADOOP_VERSION}/
+export HADOOP_HOME=~/workspace/hadoop/hadoop-dist/target/hadoop-${IMPALA_HADOOP_VERSION}
+#export HADOOP_HOME=$IMPALA_HOME/thirdparty/hadoop-${IMPALA_HADOOP_VERSION}/
 export HADOOP_CONF_DIR=$IMPALA_FE_DIR/src/test/resources
 
 export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:"${HADOOP_HOME}/share/hadoop/tools/lib/*"
@@ -185,7 +186,7 @@ export MINIKDC_HOME=$IMPALA_HOME/thirdparty/llama-minikdc-${IMPALA_MINIKDC_VERSI
 export SENTRY_HOME=$IMPALA_HOME/thirdparty/sentry-${IMPALA_SENTRY_VERSION}
 export SENTRY_CONF_DIR=$IMPALA_HOME/fe/src/test/resources
 
-export HIVE_HOME=$IMPALA_HOME/thirdparty/hive-${IMPALA_HIVE_VERSION}/
+export HIVE_HOME=~/workspace/hive
 export PATH=$HIVE_HOME/bin:$PATH
 export HIVE_CONF_DIR=$IMPALA_FE_DIR/src/test/resources
 
@@ -224,7 +225,7 @@ fi
 
 export CLUSTER_DIR=${IMPALA_HOME}/testdata/cluster
 
-export IMPALA_BUILD_THREADS=`nproc`
+export IMPALA_BUILD_THREADS=3
 
 # Some environments (like the packaging build) might not have $USER set.  Fix that here.
 export USER=${USER-`id -un`}

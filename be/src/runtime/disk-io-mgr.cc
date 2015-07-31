@@ -1213,12 +1213,13 @@ void DiskIoMgr::CacheOrCloseFileHandle(const char* fname,
   // Try to unbuffer the handle, on filesystems that do not support this call a non-zero
   // return code indicates that the operation was not successful and thus the file is
   // closed.
+  /* GERA BEGIN
   if (!close && hdfsUnbufferFile(fid->file()) == 0) {
     // Clear read statistics before returning
     hdfsFileClearReadStatistics(fid->file());
     file_handle_cache_.Put(fname, fid);
     ImpaladMetrics::IO_MGR_NUM_CACHED_FILE_HANDLES->Increment(1L);
-  } else {
+  } elsei GERA END */ {
     if (close) {
       VLOG_FILE << "Closing file=" << fname;
     } else {
